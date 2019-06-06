@@ -19,10 +19,13 @@ world.loadGraph(roomGraph)
 world.printRooms()
 player = Player("Name", world.startingRoom)
 
+#helper function:
+
 
 # FILL THIS IN
 traversalPath = []
 
+  
 
 # TRAVERSAL TEST
 visited_rooms = set()
