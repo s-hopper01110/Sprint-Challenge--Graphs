@@ -33,10 +33,39 @@ class Queue():
     def size(self):
         return len(self.queue)
 
+
+
 # FILL THIS IN
 traversalPath = []
+roomPath = {}
 
-  
+def bfs(roomPath, room_id):
+    #create an empty queue and enqueue a path to start
+    queue = Queue()
+    queue.enqueue([room_id])
+    #create set for visited
+    visited = set()
+    while queue.size() > 0:
+
+        #dequeue first path
+        path = queue.dequeue()
+        #grab the last from the path 
+        v = path[-1]
+        #if hasn't been visited
+        if v not in visited:
+            visited.add(v)
+            #check
+            for exit in roomPath[v]:
+                if roomPath[v][exit] == '?':
+                    return path
+            #add the path to neighbor // back of queue 
+            for next_exit in roomPath[v]:
+                #copy path
+                new_path = list(path)
+                new_path.append(roomPath[v][next_exit])
+                #add to queue
+                queue.enqueue(new_path)
+    return None
 
 # TRAVERSAL TEST
 visited_rooms = set()
